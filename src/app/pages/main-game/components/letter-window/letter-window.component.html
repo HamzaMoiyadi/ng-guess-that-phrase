@@ -1,0 +1,23 @@
+<!-- If letter is a space, then put break else go ahead -->
+
+<ng-container
+  *ngIf="
+    _common.isSpace(obj['letter']);
+    then spaceCharacter;
+    else otherCharacter
+  "
+></ng-container>
+<ng-template #spaceCharacter>
+  <div class="breaker"></div>
+</ng-template>
+<ng-template #otherCharacter>
+  <div class="letter-holder" [id]="obj['index']">
+    <div
+      class="letter"
+      (click)="toggleVisibility()"
+      [ngClass]="{ show: obj['visible'] }"
+    >
+      {{ obj["letter"] }}
+    </div>
+  </div>
+</ng-template>

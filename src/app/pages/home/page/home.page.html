@@ -1,0 +1,7 @@
+<h1>Home Page</h1>
+
+<ng-container *ngFor="let buttonLink of buttonLinks; let i = index">
+  <a [routerLink]="['/' + buttonLink['link']]">{{ buttonLink["view_name"] }}</a>
+
+  <br>
+</ng-container>

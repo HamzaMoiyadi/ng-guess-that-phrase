@@ -1,0 +1,14 @@
+<div class="row letters-row">
+  <ng-container *ngFor="let character of currBrokenPhrase; let i = index">
+    <game-letter-window
+      [initObj]="character"
+    ></game-letter-window>
+  </ng-container>
+</div>
+<button (click)="nextPhrase()">Next</button>
+<input
+  type="text"
+  placeholder="Which Letter to show?"
+  [(ngModel)]="showLetterInput"
+/>
+<button (click)="showLetter()">Show Letter</button>
