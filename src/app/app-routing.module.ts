@@ -1,13 +1,15 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from "./guards/auth/auth.guard";
+import { RoleBasedGuard } from './guards/role-based/role-based.guard';
 
 const routes: Routes = [
   {
     path: "login",
     loadChildren: () =>
       import("./pages/login/login.module").then(m => m.LoginModule),
-    canActivate: [AuthGuard]
+    canActivate: [RoleBasedGuard],
+    data: { role: "admin" }
   },
 
   {

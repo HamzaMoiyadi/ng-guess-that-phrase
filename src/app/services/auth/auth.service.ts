@@ -11,7 +11,7 @@ import {
 
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { MiniStoreService } from '../mini-store/mini-store.service';
+import { MiniStoreService } from "../mini-store/mini-store.service";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -38,10 +38,12 @@ export class AuthService {
 
   async googleSignIn() {
     const provider = new auth.GoogleAuthProvider();
-    
+
     const credential = await this._angularFireAuth.auth.signInWithPopup(
       provider
     );
+    console.log("credential is", credential);
+
     return this._updateUserData(credential.user);
   }
 
@@ -55,7 +57,8 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      role: user.role || "admin"
     };
 
     return userRef.set(data, { merge: true });
