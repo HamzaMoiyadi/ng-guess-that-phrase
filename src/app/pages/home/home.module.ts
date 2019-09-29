@@ -4,10 +4,10 @@ import { HomePage } from "./page/home.page";
 import { HomeRoutingModule } from "./home-routing,module";
 
 // Shared Modules
-import { UniversalHomeButtonModule } from "src/app/modules/universal-home-button/universal-home-button.module";
+import { UniversalComponentsModule } from "src/app/modules/universal-components/universal-components.module";
 @NgModule({
   declarations: [HomePage],
-  imports: [CommonModule, HomeRoutingModule, UniversalHomeButtonModule],
+  imports: [CommonModule, HomeRoutingModule, UniversalComponentsModule],
   exports: [],
   providers: []
 })

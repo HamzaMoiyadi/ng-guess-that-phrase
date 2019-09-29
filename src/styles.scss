@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 $primary-color: #2196f3;
+$font-main-color: #2a2a2a;
 
 $card-gray: #8a8a8a;
 
@@ -19,6 +20,7 @@ html,
 body {
   height: 100%;
   font-family: "Montserrat", sans-serif;
+  color: $font-main-color;
 }
 .row {
   display: flex;
@@ -44,26 +46,55 @@ body {
   }
 }
 
-@mixin set-button-params($color, $fontColor) {
+@mixin set-button-params(
+  $bgColor,
+  $fontColor,
+  $borderColor: $primary-color,
+  $hoverColor: darken($bgColor, 10),
+  $hoverTextColor: darken($fontColor, 20)
+) {
   color: $fontColor;
-  background-color: $color;
-  border-color: $color;
+  background-color: $bgColor;
+  border-color: $borderColor;
   &:hover {
-    background-color: darken($color, 10);
-    border-radius: 0;
+    background-color: $hoverColor;
+    color: $hoverTextColor;
+    
   }
 }
 .button {
-  border: none;
+  border-style: solid;
   border-radius: $global-border-radius;
-  border-width: 1px;
-  padding: 0.5em 0.75em;
+  border-width: 2px;
+  padding: 0.75em 1em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 2px;
   transition: all $button-transition-time ease-in-out;
-  cursor: pointer; 
+  cursor: pointer;
   &.primary {
     @include set-button-params($primary-color, #ffffff);
+  }
+  &.secondary {
+    @include set-button-params(#ffffff, $primary-color);
+  }
+  &.tertiary {
+    @include set-button-params(
+      transparent,
+      $primary-color,
+      transparent,
+      transparentize($primary-color, 0.9),
+      
+    );
+  }
+  &.google-sign-in {
+    @include set-button-params(#ffffff, $primary-color);
+    // fa-icon {
+    //   color: $primary-color;
+    // }
+    &:hover {
+      background-color: $primary-color;
+      color: #ffffff;
+    }
   }
 }

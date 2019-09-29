@@ -22,7 +22,7 @@ export class LetterWindowComponent implements OnInit, OnDestroy {
 
   visible: boolean = false;
 
-  constructor(private _common: CommonService) {}
+  constructor(public _common: CommonService) {}
 
   ngOnInit() {
     // this._common.isSpace(this.obj["letter"])

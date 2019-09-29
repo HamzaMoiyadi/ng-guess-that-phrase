@@ -8,4 +8,4 @@ const routes: Routes = [{ path: "", redirectTo: "" }];
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UHBRoutingModule {}
+export class UniversalComponentsRoutingModule {}

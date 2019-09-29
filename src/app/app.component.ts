@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 import { FirestoreService } from "./services/firestore/firestore.service";
-import { map } from "rxjs/operators";
+import { map, catchError } from "rxjs/operators";
 import { PhraseSet } from "./models/phrases.model";
-import { Subscription } from "rxjs";
-import { MiniStoreService } from './services/mini-store/mini-store.service';
+import { Subscription, of } from "rxjs";
+import { MiniStoreService } from "./services/mini-store/mini-store.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -14,7 +14,10 @@ export class AppComponent {
 
   phraseSets: PhraseSet[] = [];
   phraseSetsSub$: Subscription;
-  constructor(private _firestore: FirestoreService, private _miniStore: MiniStoreService) {}
+  constructor(
+    private _firestore: FirestoreService,
+    private _miniStore: MiniStoreService
+  ) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -28,6 +31,10 @@ export class AppComponent {
             return set;
           });
           return tempArr;
+        }),
+        catchError(err => {
+          console.log("error hai dost", err);
+          return of(err);
         })
       )
       .subscribe((val: PhraseSet[]) => {

@@ -12,6 +12,7 @@
     ]
   },
   "hosting": {
+    "site": "guess-that-phrase",
     "public": "dist/",
     "ignore": [
       "firebase.json",
