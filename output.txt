@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+
+@Page({
+  selector: 'game-phrase-setter',
+  templateUrl: './phrase-setter.page.html',
+  styleUrls: ['./phrase-setter.page.scss']
+})
+export class PhraseSetterPage implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}

@@ -1,0 +1,19 @@
+<p>phrase-setter works!</p>
+<div class="row cards-row">
+  <ng-container *ngFor="let phraseSet of phraseSets">
+    <div class="card">
+      <h3 class="title">{{ phraseSet["name"] }}</h3>
+      <ul class="list">
+        <li
+          class="item"
+          *ngFor="let phrase of phraseSet['phrases']; let i = index"
+        >
+          <ng-container *ngIf="i < 3">
+            {{ phrase }}
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>
+<button class="button primary">Use</button>
