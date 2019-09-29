@@ -124,6 +124,41 @@
           }
         }
       }
+    },
+    "universal-home-button": {
+      "projectType": "library",
+      "root": "projects/universal-home-button",
+      "sourceRoot": "projects/universal-home-button/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/universal-home-button/tsconfig.lib.json",
+            "project": "projects/universal-home-button/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/universal-home-button/src/test.ts",
+            "tsConfig": "projects/universal-home-button/tsconfig.spec.json",
+            "karmaConfig": "projects/universal-home-button/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/universal-home-button/tsconfig.lib.json",
+              "projects/universal-home-button/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "guess-that-phrase"
 }
