@@ -1,7 +1,15 @@
 <h1>Home Page</h1>
-<game-universal-home-button></game-universal-home-button>
-<ng-container *ngFor="let buttonLink of buttonLinks; let i = index">
-  <a [routerLink]="['/' + buttonLink['link']]">{{ buttonLink["view_name"] }}</a>
+<br />
+<ng-container *ngIf="_auth.user$ | async">
+  <h2>Hello {{ userDisplayName }}</h2>
+  <game-universal-home-button></game-universal-home-button>
+  <ng-container *ngFor="let buttonLink of buttonLinks; let i = index">
+    <a [routerLink]="['/' + buttonLink['link']]">{{
+      buttonLink["view_name"]
+    }}</a>
 
-  <br>
+    <br />
+  </ng-container>
+
+  <game-sign-out-button></game-sign-out-button>
 </ng-container>

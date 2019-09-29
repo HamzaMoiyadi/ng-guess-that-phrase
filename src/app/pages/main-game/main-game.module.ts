@@ -10,7 +10,7 @@ import { LetterWindowComponent } from "./components/letter-window/letter-window.
 import { FormsModule } from "@angular/forms";
 
 // Shared Modules
-import { UniversalHomeButtonModule } from "src/app/modules/universal-home-button/universal-home-button.module";
+import { UniversalComponentsModule } from "src/app/modules/universal-components/universal-components.module";
 
 @NgModule({
   declarations: [PhraseDisplayComponent, MainGamePage, LetterWindowComponent],
@@ -18,7 +18,7 @@ import { UniversalHomeButtonModule } from "src/app/modules/universal-home-button
     CommonModule,
     MainGameRoutingModule,
     FormsModule,
-    UniversalHomeButtonModule
+    UniversalComponentsModule
   ],
   exports: [],
   providers: []
