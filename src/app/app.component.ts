@@ -22,24 +22,6 @@ export class AppComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this._firestore
-      .getAllPhrases()
-      .pipe(
-        map((sets: PhraseSet[]) => {
-          let tempArr = sets.map((set: PhraseSet) => {
-            set["phrases"] = set["phrases"].map(phrase => phrase.toUpperCase());
-            return set;
-          });
-          return tempArr;
-        }),
-        catchError(err => {
-          console.log("error hai dost", err);
-          return of(err);
-        })
-      )
-      .subscribe((val: PhraseSet[]) => {
-        // set phraseSet array in mini-sotre for easy retrieval
-        this._miniStore.setNewPhrasesFromDB(val);
-      });
+    
   }
 }

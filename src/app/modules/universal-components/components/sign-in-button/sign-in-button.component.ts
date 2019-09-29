@@ -3,6 +3,7 @@ import { AuthService } from "src/app/services/auth/auth.service";
 
 // fontawesome
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { Router } from '@angular/router';
 @Component({
   selector: "game-sign-in-button",
   templateUrl: "./sign-in-button.component.html",
@@ -10,7 +11,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 })
 export class SignInButtonComponent implements OnInit {
   faGoogle = faGoogle;
-  constructor(private _auth: AuthService) {}
+  constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit() {}
 
@@ -19,6 +20,7 @@ export class SignInButtonComponent implements OnInit {
       .googleSignIn()
       .then(res => {
         console.log(res);
+        this._router.navigate(['/']);
       })
       .catch(err => {
         console.log(err);
