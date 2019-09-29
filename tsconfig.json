@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "universal-home-button": [
+        "dist/universal-home-button"
+      ],
+      "universal-home-button/*": [
+        "dist/universal-home-button/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

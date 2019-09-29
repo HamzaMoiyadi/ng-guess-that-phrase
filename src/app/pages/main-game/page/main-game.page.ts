@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+
 
 @Component({
-    selector: 'game-main-game',
-    templateUrl: './main-game.page.html',
-    styleUrls: ['./main-game.page.scss']
+  selector: "game-main-game",
+  templateUrl: "./main-game.page.html",
+  styleUrls: ["./main-game.page.scss"]
 })
 export class MainGamePage implements OnInit {
-    constructor() { }
+  constructor() {}
 
-    ngOnInit(): void { }
+  ngOnInit(): void {}
 }
