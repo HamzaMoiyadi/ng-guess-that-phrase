@@ -11,13 +11,11 @@ import { FormsModule } from "@angular/forms";
 
 // Shared Modules
 import { UniversalComponentsModule } from "src/app/modules/universal-components/universal-components.module";
-import { PhraseSetterPage } from "../phrase-setter/page/phrase-setter.page";
 
 @NgModule({
   declarations: [
     PhraseDisplayComponent,
     LetterWindowComponent,
-    PhraseSetterPage,
     IndexScreen,
     SetPhraseScreen,
     GameScreen

@@ -29,7 +29,7 @@ export class AppComponent {
     // since this is the first component that loads ever for a user , makes sense to get all phrases from the db and send to the store from here. if the user is logged in of course.
     this._auth.user$
       .pipe(
-        take(1),
+  
         map(user => !!user) // <-- map to boolean
       )
       .subscribe((loggedIn: boolean) => {
