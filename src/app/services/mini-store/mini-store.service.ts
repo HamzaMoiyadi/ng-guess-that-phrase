@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { Phrases, PhraseSet } from "src/app/models/phrases.model";
+import { PhraseSet } from "src/app/models/phrases.model";
 import { User } from "src/app/models/user.model";
 
 @Injectable({

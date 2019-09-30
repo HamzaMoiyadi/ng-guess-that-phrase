@@ -34,4 +34,6 @@ export class PhraseSetterPage implements OnInit, OnDestroy {
     //Add 'implements OnDestroy' to the class.
     this.phraseSetSub$.unsubscribe();
   }
+
+  useSet(id: string) {}
 }

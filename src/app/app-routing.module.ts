@@ -25,18 +25,10 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "phrase-set-maker",
+    path: "make-phrase-set",
     loadChildren: () =>
       import("./pages/phrase-maker/phrase-maker.module").then(
         m => m.PhraseMakerModule
-      ),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: "phrase-setter",
-    loadChildren: () =>
-      import("./pages/phrase-setter/phrase-setter.module").then(
-        m => m.PhraseSetterModule
       ),
     canActivate: [AuthGuard]
   }

@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   userDisplayName: string;
   buttonLinks = [
     { link: "main-game", view_name: "Start Game" },
-    { link: "phrase-set-maker", view_name: "Make your own Phrase Set" },
+    { link: "make-phrase-set", view_name: "Make your own Phrase Set" },
     { link: "phrase-setter", view_name: "Set phrase for your game" }
   ];
 
@@ -33,29 +33,8 @@ export class HomePage implements OnInit {
       }
     });
 
-    // since this is the first page user will come to after signing in, makes sense to get all phrases from the db and send to the store from here
-    this._getPhrases();
+    
+    
   }
 
-  private _getPhrases() {
-    this._firestore
-      .getAllPhrases()
-      .pipe(
-        map((sets: PhraseSet[]) => {
-          let tempArr = sets.map((set: PhraseSet) => {
-            set["phrases"] = set["phrases"].map(phrase => phrase.toUpperCase());
-            return set;
-          });
-          return tempArr;
-        }),
-        catchError(err => {
-          console.log("error hai dost", err);
-          return of(err);
-        })
-      )
-      .subscribe((val: PhraseSet[]) => {
-        // set phraseSet array in mini-sotre for easy retrieval
-        this._miniStore.setNewPhrasesFromDB(val);
-      });
-  }
 }

@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChildren } from "@angular/core";
+import { Component, OnInit, ViewChildren, Input } from "@angular/core";
 import { CommonService } from "src/app/services/common.service";
+import { PhraseSet } from "src/app/models/phrases.model";
+import { MiniStoreService } from "src/app/services/mini-store/mini-store.service";
 
 interface CharactersFromPhrase {
   letter: string;
@@ -13,17 +15,19 @@ interface CharactersFromPhrase {
   styleUrls: ["./phrase-display.component.scss"]
 })
 export class PhraseDisplayComponent implements OnInit {
-  phrases: Array<string> = [
-    // "H a m",
-    // "Put lipstick on a pig",
-    // "Piece of cake",
-    // "Scoot over"
-    "Shakir Moiyadi",
-    "Shabbir Moiyadi"
-  ];
+  @Input("phraseSet") set setPhraseSetToUse(set: PhraseSet) {
+    console.log("set is ", set);
+
+    if (set) {
+      this.phraseSet = set;
+      this.initGame();
+    }
+  }
+
+  phraseSet: PhraseSet;
 
   currBrokenPhrase: CharactersFromPhrase[] = [];
-  currPhrase: string = "";
+
   currIndex: number = null;
 
   index: number = -1;
@@ -31,15 +35,16 @@ export class PhraseDisplayComponent implements OnInit {
   letterBeingShown: string = "";
   showCharacter: object = {};
 
-  constructor(private _common: CommonService) {}
+  constructor(
+    private _common: CommonService,
+    private _miniStore: MiniStoreService
+  ) {}
 
-  ngOnInit() {
-    this.initGame();
-  }
+  ngOnInit() {}
 
   initGame() {
     this.index = 0;
-    this.setCurrBrokenPhrase(this.phrases[this.index]);
+    this.setCurrBrokenPhrase(this.phraseSet["phrases"][this.index]["phrase"]);
     // this.nextPhrase();
   }
 
@@ -47,30 +52,28 @@ export class PhraseDisplayComponent implements OnInit {
     // if(!letter) {
 
     // }
-    let currPhrase = this.phrases[this.index];
+    let letterToShow = letter || this.showLetterInput;
+    let currPhrase = this.currentPhrase;
     let currPhraseIndex = this.index;
-    let tempArray: number[] = this.getAllIndices(
-      this.showLetterInput,
-      currPhrase
-    );
+    let tempArray: number[] = this.getAllIndices(letterToShow, currPhrase);
     if (tempArray.length) {
-      this._common.setWhichCharacterToShow(this.showLetterInput);
+      this._common.setWhichCharacterToShow(letterToShow.toUpperCase());
     } else {
       alert("nai hai dost");
     }
+  }
 
-    // console.log("letter to be shown is ", this.showLetterInput);
-    // this.letterBeingShown = this.showLetterInput;
-
-    // if ( === -1) {
-    //   alert("letter nai hai dost");
-    // }
+  showAll() {
+    this.currBrokenPhrase.forEach((letter: CharactersFromPhrase) => {
+      // console.log(letter['letter']);
+      this.showLetter(letter["letter"]);
+    });
   }
 
   nextPhrase() {
-    this.index = (this.index + 1) % this.phrases.length;
+    this.index = (this.index + 1) % this.phraseSet["phrases"].length;
     // this.currBrokenPhrase = [];
-    this.setCurrBrokenPhrase(this.phrases[this.index]);
+    this.setCurrBrokenPhrase(this.phraseSet["phrases"][this.index]["phrase"]);
   }
 
   setCurrBrokenPhrase(phrase: string) {
@@ -86,7 +89,6 @@ export class PhraseDisplayComponent implements OnInit {
         });
       });
     this.currBrokenPhrase = tempArray;
-    
   }
 
   private _isSpace(phrase) {
@@ -106,5 +108,9 @@ export class PhraseDisplayComponent implements OnInit {
       });
 
     return x;
+  }
+
+  get currentPhrase() {
+    return this.phraseSet["phrases"][this.index]["phrase"];
   }
 }

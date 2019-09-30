@@ -2,12 +2,12 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 import { PhraseMakerRoutingModule } from "./phrase-maker-routing.module";
-import { PhraseMakerPage } from "./page/phrase-maker.page";
+import { PhraseMakerScreen } from "./screens/phrase-maker/phrase-maker.screen";
 
-import { FormsModule } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [PhraseMakerPage],
-  imports: [CommonModule, PhraseMakerRoutingModule, FormsModule]
+  declarations: [PhraseMakerScreen],
+  imports: [CommonModule, PhraseMakerRoutingModule, FormsModule, ReactiveFormsModule]
 })
 export class PhraseMakerModule {}

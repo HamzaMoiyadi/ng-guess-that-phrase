@@ -1,10 +1,12 @@
+
+<h3>Set Name: {{ phraseSet["name"] }}</h3>
 <div class="row letters-row">
-  <ng-container *ngFor="let character of currBrokenPhrase; let i = index">
-    <game-letter-window
-      [initObj]="character"
-    ></game-letter-window>
-  </ng-container>
+  <game-letter-window
+    [initObj]="character"
+    *ngFor="let character of currBrokenPhrase; let i = index"
+  ></game-letter-window>
 </div>
+<h5>{{ phraseSet["phrases"][index]["hint"] }}</h5>
 <button (click)="nextPhrase()">Next</button>
 <input
   type="text"
@@ -12,3 +14,4 @@
   [(ngModel)]="showLetterInput"
 />
 <button (click)="showLetter()">Show Letter</button>
+<button (click)="showAll()">Show All</button>

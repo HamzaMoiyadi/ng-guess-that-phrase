@@ -1,0 +1,11 @@
+<h1>Main Game</h1>
+<br />
+<game-universal-home-button></game-universal-home-button>
+<br />
+<!-- Start game with selected phrase set -->
+<a [routerLink]="['game']" [ngClass]="{ disabled: !set || !set['name'] }"
+  >Start game with selected set:{{ set["name"] }}
+</a>
+<br />
+<!-- Select phrase set -->
+<a [routerLink]="['set-phrase']">Select a phrase set to play on</a>

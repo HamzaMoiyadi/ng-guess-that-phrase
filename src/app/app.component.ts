@@ -1,9 +1,12 @@
 import { Component } from "@angular/core";
 import { FirestoreService } from "./services/firestore/firestore.service";
-import { map, catchError } from "rxjs/operators";
-import { PhraseSet } from "./models/phrases.model";
+import { map, catchError, take } from "rxjs/operators";
+import { PhraseSet, Phrase } from "./models/phrases.model";
 import { Subscription, of } from "rxjs";
 import { MiniStoreService } from "./services/mini-store/mini-store.service";
+import { AuthService } from "./services/auth/auth.service";
+
+import { DEFAULTS } from "src/app/config/defaults";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -16,12 +19,39 @@ export class AppComponent {
   phraseSetsSub$: Subscription;
   constructor(
     private _firestore: FirestoreService,
-    private _miniStore: MiniStoreService
+    private _miniStore: MiniStoreService,
+    private _auth: AuthService
   ) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    
+    // since this is the first component that loads ever for a user , makes sense to get all phrases from the db and send to the store from here. if the user is logged in of course.
+    this._auth.user$
+      .pipe(
+        take(1),
+        map(user => !!user) // <-- map to boolean
+      )
+      .subscribe((loggedIn: boolean) => {
+        if (loggedIn) {
+          console.log("nigga we loggedin, let's get data");
+
+          this._firestore.getAllPhrasesFromDB().then((phraseSets: PhraseSet[]) => {
+            // set all phrases
+            this._miniStore.setNewPhrasesFromDB(phraseSets);
+            // set default set
+            console.log("phrase sets are ", phraseSets);
+            let tempPhraseSet: PhraseSet = phraseSets.filter(
+              (set: PhraseSet, index: number) => {
+                return set["name"] === DEFAULTS.PHRASE_SET;
+              }
+            )[0];
+            console.log("default phrase set is ", tempPhraseSet);
+            this._miniStore.setPhraseSetToUse(tempPhraseSet);
+          });
+        } else {
+          console.log("not fetching user details coz we ain't authorized");
+        }
+      });
   }
 }
