@@ -1,40 +1,17 @@
 [
   {
-    "name": "home",
-    "description": "A basic home page, with links to other pages"
+    "name": "home"
   },
   {
-    "name": "login",
-    "description": "Screen where one can login using their google ID. Should only show up when user is not logged in"
+    "name": "login"
   },
   {
-    "name": "main-game",
-    "description": "Main game screen",
-    "children": [
-      {
-        "name": "index",
-        "description": ""
-      },
-      {
-        "name": "game",
-        "description": ""
-      },
-      {
-        "name": "set-phrases",
-        "description": ""
-      },
-      {
-        "name": "make-phrase-set",
-        "description": ""
-      }
-    ]
+    "name": "main-game"
   },
   {
-    "name": "home",
-    "description": "A basic home page, with links to other pages"
+    "name": "phrase-maker"
   },
   {
-    "name": "home",
-    "description": "A basic home page, with links to other pages"
+    "name": "phrase-setter"
   }
 ]

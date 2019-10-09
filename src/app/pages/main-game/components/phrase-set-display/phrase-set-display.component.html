@@ -1,0 +1,17 @@
+<div class="card">
+  <h3 class="title">{{ displaySet["name"] }}</h3>
+  <ul class="list">
+    <li class="item" *ngFor="let phrase of displaySet['phrases']; let i = index">
+      <ng-container *ngIf="i < 3">
+        <p>
+          {{ phrase["phrase"] }}
+        </p>
+        <small>{{ phrase["hint"] }}</small>
+      </ng-container>
+    </li>
+  </ul>
+  <!-- Use button -->
+  <button class="button secondary" (click)="useSet(displaySet['id'])">
+    Use
+  </button>
+</div>

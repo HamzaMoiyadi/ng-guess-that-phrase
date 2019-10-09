@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "media-queries.scss";
 
 $primary-color: #2196f3;
 $font-main-color: #2a2a2a;
@@ -21,6 +22,37 @@ body {
   height: 100%;
   font-family: "Montserrat", sans-serif;
   color: $font-main-color;
+  background: url("./assets/bg.jpg");
+  background-size: cover;
+  background-position: bottom;
+}
+
+.pixelated {
+  font-family: "8BITWONDERNominal";
+}
+@mixin pixelated-text-shadow($width: 2px, $color: #0a0a0a) {
+  text-shadow: -$width -$width 3px $color, $width -$width 3px $color,
+    -$width $width 3px $color, $width $width 3px $color;
+}
+@mixin pixelated-box-shadow($width: 2px, $color: #0a0a0a) {
+  box-shadow: -$width -$width 3px $color, $width -$width 3px $color,
+    -$width $width 3px $color, $width $width 3px $color;
+}
+.game-title {
+  font-family: "8BITWONDERNominal";
+  color: white;
+  text-align: center;
+  @include pixelated-text-shadow();
+  .first-letter {
+    font-size: 1.5em;
+  }
+}
+.full-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .row {
   display: flex;
@@ -31,14 +63,16 @@ body {
 
 .card {
   border: 1px solid $card-gray;
-  padding: 0.5em;
-
+  border-radius: 0.3em;
   .title {
+    padding: 0.5em;
     font-weight: 500;
+    border-bottom: 1px solid $card-gray;
   }
   .list {
     list-style-type: none;
     .item {
+      padding-left: 0.5em;
       &:nth-of-type(even) {
         background-color: $list-gray-tint;
       }
@@ -47,9 +81,9 @@ body {
 }
 
 @mixin set-button-params(
-  $bgColor,
+  $bgColor: $primary-color,
   $fontColor,
-  $borderColor: $primary-color,
+  $borderColor: $bgColor,
   $hoverColor: darken($bgColor, 10),
   $hoverTextColor: darken($fontColor, 20)
 ) {
@@ -59,6 +93,7 @@ body {
   &:hover {
     background-color: $hoverColor;
     color: $hoverTextColor;
+    border-color: $hoverColor;
   }
 }
 .button {
@@ -71,6 +106,8 @@ body {
   letter-spacing: 2px;
   transition: all $button-transition-time ease-in-out;
   cursor: pointer;
+  @include pixelated-box-shadow();
+
   &.primary {
     @include set-button-params($primary-color, #ffffff);
   }
@@ -84,6 +121,9 @@ body {
       transparent,
       transparentize($primary-color, 0.9)
     );
+  }
+  &.sign-out {
+    @include set-button-params(#cc0000, #ffffff);
   }
   &.google-sign-in {
     @include set-button-params(#ffffff, $primary-color);

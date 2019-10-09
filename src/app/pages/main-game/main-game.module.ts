@@ -11,6 +11,8 @@ import { FormsModule } from "@angular/forms";
 
 // Shared Modules
 import { UniversalComponentsModule } from "src/app/modules/universal-components/universal-components.module";
+import { PhraseSetDisplayComponent } from './components/phrase-set-display/phrase-set-display.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { UniversalComponentsModule } from "src/app/modules/universal-components/
     LetterWindowComponent,
     IndexScreen,
     SetPhraseScreen,
-    GameScreen
+    GameScreen,
+    PhraseSetDisplayComponent,
+    
   ],
   imports: [
     CommonModule,

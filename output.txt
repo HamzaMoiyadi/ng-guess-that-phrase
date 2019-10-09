@@ -1,15 +1,218 @@
-import { Component, OnInit } from '@angular/core';
+.
+├── angular.json
+├── browserslist
+├── database.rules.json
+├── deploy.sh
+├── dist
+│   ├── 10-es2015.7eff126063ede6cd5251.js
+│   ├── 10-es5.7eff126063ede6cd5251.js
+│   ├── 2-es2015.9b89f366a320c7dbe37b.js
+│   ├── 2-es5.9b89f366a320c7dbe37b.js
+│   ├── 3rdpartylicenses.txt
+│   ├── 7-es2015.4f45ae43496001f95e3c.js
+│   ├── 7-es5.4f45ae43496001f95e3c.js
+│   ├── 8-es2015.0a4edb570a61a12f1eb0.js
+│   ├── 8-es5.0a4edb570a61a12f1eb0.js
+│   ├── 9-es2015.fea80eaa84e56ff5883e.js
+│   ├── 9-es5.fea80eaa84e56ff5883e.js
+│   ├── assets
+│   │   └── icons
+│   │       ├── icon-128x128.png
+│   │       ├── icon-144x144.png
+│   │       ├── icon-152x152.png
+│   │       ├── icon-192x192.png
+│   │       ├── icon-384x384.png
+│   │       ├── icon-512x512.png
+│   │       ├── icon-72x72.png
+│   │       └── icon-96x96.png
+│   ├── common-es2015.772f18db01013a5fc25d.js
+│   ├── common-es5.772f18db01013a5fc25d.js
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── main-es2015.3d46bbbfbabd1b184bcc.js
+│   ├── main-es5.3d46bbbfbabd1b184bcc.js
+│   ├── manifest.webmanifest
+│   ├── ngsw.json
+│   ├── ngsw-worker.js
+│   ├── polyfills-es2015.f5af3718873a34cd441f.js
+│   ├── polyfills-es5.59830500403872982ab2.js
+│   ├── runtime-es2015.d498de4dfc3dcfae68a8.js
+│   ├── runtime-es5.d498de4dfc3dcfae68a8.js
+│   ├── safety-worker.js
+│   ├── styles.7d9e8b09af95153b16f6.css
+│   └── worker-basic.min.js
+├── e2e
+│   ├── protractor.conf.js
+│   ├── src
+│   │   ├── app.e2e-spec.ts
+│   │   └── app.po.ts
+│   └── tsconfig.json
+├── Example Commands.md
+├── firebase.json
+├── firestore-debug.log
+├── firestore.indexes.json
+├── firestore.rules
+├── functions
+│   ├── index.js
+│   ├── package.json
+│   └── package-lock.json
+├── karma.conf.js
+├── make-page.sh
+├── ngsw-config.json
+├── output.txt
+├── package.json
+├── package-lock.json
+├── README.md
+├── sitemap.json
+├── src
+│   ├── app
+│   │   ├── app.component.html
+│   │   ├── app.component.scss
+│   │   ├── app.component.spec.ts
+│   │   ├── app.component.ts
+│   │   ├── app.module.ts
+│   │   ├── app-routing.module.ts
+│   │   ├── config
+│   │   │   └── defaults.ts
+│   │   ├── guards
+│   │   │   ├── auth
+│   │   │   │   ├── auth.guard.spec.ts
+│   │   │   │   └── auth.guard.ts
+│   │   │   └── role-based
+│   │   │       ├── role-based.guard.spec.ts
+│   │   │       └── role-based.guard.ts
+│   │   ├── models
+│   │   │   ├── phrases.model.ts
+│   │   │   └── user.model.ts
+│   │   ├── modules
+│   │   │   ├── README.md
+│   │   │   ├── redirect-pages
+│   │   │   │   └── redirect-pages.module.ts
+│   │   │   └── universal-components
+│   │   │       ├── components
+│   │   │       │   ├── sign-in-button
+│   │   │       │   │   ├── sign-in-button.component.html
+│   │   │       │   │   ├── sign-in-button.component.scss
+│   │   │       │   │   ├── sign-in-button.component.spec.ts
+│   │   │       │   │   └── sign-in-button.component.ts
+│   │   │       │   ├── sign-out-button
+│   │   │       │   │   ├── sign-out-button.component.html
+│   │   │       │   │   ├── sign-out-button.component.scss
+│   │   │       │   │   ├── sign-out-button.component.spec.ts
+│   │   │       │   │   └── sign-out-button.component.ts
+│   │   │       │   └── universal-home-button
+│   │   │       │       ├── universal-home-button.component.html
+│   │   │       │       ├── universal-home-button.component.scss
+│   │   │       │       ├── universal-home-button.component.spec.ts
+│   │   │       │       └── universal-home-button.component.ts
+│   │   │       ├── universal-components.module.ts
+│   │   │       └── universal-components-routing.module.ts
+│   │   ├── pages
+│   │   │   ├── home
+│   │   │   │   ├── components
+│   │   │   │   ├── home.module.ts
+│   │   │   │   ├── home-routing,module.ts
+│   │   │   │   └── page
+│   │   │   │       ├── home.page.html
+│   │   │   │       ├── home.page.scss
+│   │   │   │       └── home.page.ts
+│   │   │   ├── login
+│   │   │   │   ├── components
+│   │   │   │   ├── login.module.ts
+│   │   │   │   ├── login-routing.module.ts
+│   │   │   │   └── page
+│   │   │   │       ├── login.page.html
+│   │   │   │       ├── login.page.scss
+│   │   │   │       ├── login.page.spec.ts
+│   │   │   │       └── login.page.ts
+│   │   │   ├── main-game
+│   │   │   │   ├── components
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── letter-window
+│   │   │   │   │   │   ├── letter-window.component.html
+│   │   │   │   │   │   ├── letter-window.component.scss
+│   │   │   │   │   │   ├── letter-window.component.spec.ts
+│   │   │   │   │   │   └── letter-window.component.ts
+│   │   │   │   │   └── phrase-display
+│   │   │   │   │       ├── phrase-display.component.html
+│   │   │   │   │       ├── phrase-display.component.scss
+│   │   │   │   │       ├── phrase-display.component.spec.ts
+│   │   │   │   │       └── phrase-display.component.ts
+│   │   │   │   ├── main-game.module.ts
+│   │   │   │   ├── main-game-routing.module.ts
+│   │   │   │   └── screens
+│   │   │   │       ├── game
+│   │   │   │       │   ├── game.screen.html
+│   │   │   │       │   ├── game.screen.scss
+│   │   │   │       │   └── game.screen.ts
+│   │   │   │       ├── index
+│   │   │   │       │   ├── index.screen.html
+│   │   │   │       │   ├── index.screen.scss
+│   │   │   │       │   └── index.screen.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       └── set-phrase
+│   │   │   │           ├── set-phrase.screen.html
+│   │   │   │           ├── set-phrase.screen.scss
+│   │   │   │           └── set-phrase.screen.ts
+│   │   │   ├── phrase-maker
+│   │   │   │   ├── components
+│   │   │   │   ├── phrase-maker.module.ts
+│   │   │   │   ├── phrase-maker-routing.module.ts
+│   │   │   │   └── screens
+│   │   │   │       └── phrase-maker
+│   │   │   │           ├── phrase-maker.screen.html
+│   │   │   │           ├── phrase-maker.screen.scss
+│   │   │   │           └── phrase-maker.screen.ts
+│   │   │   ├── phrase-setter
+│   │   │   │   ├── components
+│   │   │   │   ├── page
+│   │   │   │   │   ├── phrase-setter.page.html
+│   │   │   │   │   ├── phrase-setter.page.scss
+│   │   │   │   │   ├── phrase-setter.page.spec.ts
+│   │   │   │   │   └── phrase-setter.page.ts
+│   │   │   │   ├── phrase-setter.module.ts
+│   │   │   │   └── phrase-setter-routing.module.ts
+│   │   │   └── README.md
+│   │   └── services
+│   │       ├── api
+│   │       │   ├── api.service.spec.ts
+│   │       │   └── api.service.ts
+│   │       ├── auth
+│   │       │   ├── auth.service.spec.ts
+│   │       │   └── auth.service.ts
+│   │       ├── common.service.spec.ts
+│   │       ├── common.service.ts
+│   │       ├── firestore
+│   │       │   ├── firestore.service.spec.ts
+│   │       │   └── firestore.service.ts
+│   │       └── mini-store
+│   │           ├── mini-store.service.spec.ts
+│   │           └── mini-store.service.ts
+│   ├── assets
+│   │   └── icons
+│   │       ├── icon-128x128.png
+│   │       ├── icon-144x144.png
+│   │       ├── icon-152x152.png
+│   │       ├── icon-192x192.png
+│   │       ├── icon-384x384.png
+│   │       ├── icon-512x512.png
+│   │       ├── icon-72x72.png
+│   │       └── icon-96x96.png
+│   ├── environments
+│   │   ├── environment.prod.ts
+│   │   └── environment.ts
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── main.ts
+│   ├── manifest.webmanifest
+│   ├── polyfills.ts
+│   ├── styles.scss
+│   └── test.ts
+├── storage.rules
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.spec.json
+├── tslint.json
+└── yarn.lock
 
-@Page({
-  selector: 'game-phrase-setter',
-  templateUrl: './phrase-setter.page.html',
-  styleUrls: ['./phrase-setter.page.scss']
-})
-export class PhraseSetterPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+50 directories, 165 files

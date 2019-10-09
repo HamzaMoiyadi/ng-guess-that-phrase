@@ -1,27 +1,3 @@
-<div [formGroup]="phraseMaker">
-  <!-- set name -->
-  <input type="text" formControlName="set_name" placeholder="Phrase set name" />
-  <!-- set phrases and hits -->
+<game-universal-home-button></game-universal-home-button>
 
-  <div formArrayName="phrases">
-    <div
-      *ngFor="let phrase of phrases['controls']; let i = index"
-      [formGroupName]="i"
-    >
-      <input type="text" formControlName="phrase" placeholder="Phrase" />
-      <input type="text" formControlName="hint" placeholder="Hint" />
-      <button class="button tertiary" (click)="addPhrase()">
-        <i class="material-icons icon">add</i>
-      </button>
-      <button class="button tertiary" (click)="removePhrase(i)" *ngIf="i>0">
-        <i class="material-icons icon">remove</i>
-      </button>
-    </div>
-  </div>
-
-  <pre>
-    {{ phraseMaker.value | json }}
-    </pre
-  >
-  <button (click)="makePhraseSet(phraseMaker['value'])">make phrase set</button>
-</div>
+<game-phrase-form></game-phrase-form>

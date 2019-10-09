@@ -15,9 +15,8 @@ import { MiniStoreService } from "src/app/services/mini-store/mini-store.service
 export class HomePage implements OnInit {
   userDisplayName: string;
   buttonLinks = [
-    { link: "main-game", view_name: "Start Game" },
-    { link: "make-phrase-set", view_name: "Make your own Phrase Set" },
-    { link: "phrase-setter", view_name: "Set phrase for your game" }
+    { link: "/main-game/", view_name: "Start Game" },
+    { link: "/make-phrase-set", view_name: "Make Phrase Set" },
   ];
 
   constructor(

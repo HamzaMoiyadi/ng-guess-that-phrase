@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
+import { MiniStoreService } from "./mini-store/mini-store.service";
+import { filter } from "rxjs/operators";
+import { PhraseSet } from "../models/phrases.model";
 
 @Injectable({
   providedIn: "root"
@@ -7,7 +10,7 @@ import { BehaviorSubject, Subject } from "rxjs";
 export class CommonService {
   // Reason we use a Subject here and not a BehaviourSubject is because any Subscription to a BehaviourSubject's stream will always emit the latest value in the BehaviourSubject, and we don't want that to happen when the next phrase comes in, to have the previously highlighted characters be shown again
   private whichCharacterToShow: Subject<string> = new Subject<string>();
-  constructor() {}
+  constructor(private _miniStore: MiniStoreService) {}
 
   getWhichCharacterToShow() {
     return this.whichCharacterToShow.asObservable();
@@ -41,5 +44,13 @@ export class CommonService {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  }
+
+  getPhraseSetToUse(id: string) {
+    return this._miniStore.getAllPhrases().pipe(
+      filter((set: PhraseSet) => {
+        return set["id"] === id;
+      })
+    );
   }
 }

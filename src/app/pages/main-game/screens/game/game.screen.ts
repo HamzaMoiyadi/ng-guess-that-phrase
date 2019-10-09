@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { PhraseSet } from "src/app/models/phrases.model";
+import { PhraseSet, Phrase } from "src/app/models/phrases.model";
 import { MiniStoreService } from "src/app/services/mini-store/mini-store.service";
+import { filter, tap } from "rxjs/operators";
+import { of, from, Observable } from "rxjs";
+import { CommonService } from "src/app/services/common.service";
 
 @Component({
   selector: "game-game-screen",
@@ -9,13 +12,19 @@ import { MiniStoreService } from "src/app/services/mini-store/mini-store.service
 })
 export class GameScreen implements OnInit {
   set: PhraseSet;
-  constructor(private _miniStore: MiniStoreService) {
-    this.set = { id: "", name: "", phrases: [] };
+  constructor(
+    private _miniStore: MiniStoreService,
+    private _common: CommonService
+  ) {
+    this.set = { id: "", name: "", phrases: [{ phrase: "", hint: "" }] };
   }
 
   ngOnInit(): void {
-    this._miniStore.getPhraseSetToUse().subscribe((set: PhraseSet) => {
-      this.set = { ...this.set, ...set };
+    this._miniStore.getPhraseSetToUse().subscribe((id: string) => {
+      console.log(id);
+      this._common.getPhraseSetToUse(id).subscribe((set: PhraseSet) => {
+        this.set = set;
+      });
     });
   }
 }

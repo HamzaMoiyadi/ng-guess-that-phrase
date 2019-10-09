@@ -14,19 +14,19 @@ export class PhraseSetterPage implements OnInit, OnDestroy {
   constructor(private _miniStore: MiniStoreService) {}
 
   ngOnInit() {
-    this.phraseSetSub$ = this._miniStore
-      .getAllPhrases()
-      .subscribe((phraseSets: PhraseSet[]) => {
-        // to understand double !, consider the example
-        // if phraseSets has a truthy value, ! will make the value as falsy
-        // another ! on top of that will make that falsy value to true
-        // JS is weird. But this seems like a clean way to go on the boolean value
-        if (!!phraseSets) {
-          console.log("phrasesets is ", phraseSets);
+    // this.phraseSetSub$ = this._miniStore
+    //   .getAllPhrases()
+    //   .subscribe((phraseSets: PhraseSet[]) => {
+    //     // to understand double !, consider the example
+    //     // if phraseSets has a truthy value, ! will make the value as falsy
+    //     // another ! on top of that will make that falsy value to true
+    //     // JS is weird. But this seems like a clean way to go on the boolean value
+    //     if (!!phraseSets) {
+    //       console.log("phrasesets is ", phraseSets);
 
-          this.phraseSets = phraseSets;
-        }
-      });
+    //       this.phraseSets = phraseSets;
+    //     }
+    //   });
   }
 
   ngOnDestroy(): void {

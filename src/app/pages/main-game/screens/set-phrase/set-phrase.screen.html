@@ -7,27 +7,14 @@
 <a [routerLink]="['/make-phrase-set']">Make your own phrase set</a>
 <br />
 <div class="row cards-row">
-  <ng-container *ngFor="let phraseSet of phraseSets">
-    <div class="card">
-      <h3 class="title">{{ phraseSet["name"] }}</h3>
-      <ul class="list">
-        <li
-          class="item"
-          *ngFor="let phrase of phraseSet['phrases']; let i = index"
-        >
-          <ng-container *ngIf="i < 3">
-            <p>
-              {{ phrase["phrase"] }}
-            </p>
-            <small>{{ phrase["hint"] }}</small>
-          </ng-container>
-        </li>
-      </ul>
-      <!-- Use button -->
-      <button class="button secondary" (click)="useSet(phraseSet['id'])">
-        Use
-      </button>
-    </div>
-  </ng-container>
+  <!-- <ng-container> -->
+  <game-phrase-set-display
+    *ngFor="let phraseSet of phraseSets"
+    (setSelect)="selectSet($event)"
+    [set]="phraseSet"
+    
+  ></game-phrase-set-display>
+
+  <!-- </ng-container> -->
 </div>
-<button class="button primary" (click)="startGame()" >Start Game</button>
+<button class="button primary" (click)="startGame()">Start Game</button>
