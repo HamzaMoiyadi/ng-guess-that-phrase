@@ -1,11 +1,29 @@
-<h1>Main Game</h1>
+<div class="full-container">
+  <div class="content">
+    <div class="home-button-wrapper">
+      <game-universal-home-button></game-universal-home-button>
+    </div>
+    <div class="spacer"></div>
+    <h1 class="game-title">
+      <span class="first-letter">G</span>uess That
+      <span class="first-letter">P</span>hrase
+    </h1>
+    <div class="spacer"></div>
+    <!-- Start game with selected phrase set -->
+    <div class="links">
+      <a
+        [routerLink]="['game']"
+        class="link button primary pixelated"
+        [ngClass]="{ disabled: !set || !set['name'] }"
+        >Start game
+      </a>
+      <p class="link sub-text">with selected set:{{ set["name"] }}</p>
+      
+      <!-- Select phrase set -->
+      <a [routerLink]="['set-phrase']" class="link button primary pixelated"
+        >Select a phrase set to play on</a
+      >
+    </div>
+  </div>
+</div>
 <br />
-<game-universal-home-button></game-universal-home-button>
-<br />
-<!-- Start game with selected phrase set -->
-<a [routerLink]="['game']" [ngClass]="{ disabled: !set || !set['name'] }"
-  >Start game with selected set:{{ set["name"] }}
-</a>
-<br />
-<!-- Select phrase set -->
-<a [routerLink]="['set-phrase']">Select a phrase set to play on</a>
